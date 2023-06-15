@@ -8,6 +8,7 @@ import { Model } from '../model';
   styleUrls: ['./todo.component.css'],
 })
 export class TodoComponent {
+  displayAll: boolean = true;
   constructor() {}
   //items: TodoItem[] = [
   // {
@@ -49,6 +50,8 @@ export class TodoComponent {
   }
 
   getItems() {
-    return this.model.items;
+    // alert(this.displayAll)
+    if (this.displayAll) return this.model.items;
+    return this.model.items.filter((item) => !item.action);
   }
 }

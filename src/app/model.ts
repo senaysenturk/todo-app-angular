@@ -9,15 +9,15 @@ export class Model {
     this.items = [
       {
         description: 'Kahvaltı',
-        action: 'Yes',
+        action: true,
       },
       {
         description: 'Spor',
-        action: 'No',
+        action:false,
       },
       {
         description: 'Alışveriş',
-        action: 'Yes',
+        action: true
       },
     ];
   }
