@@ -28,39 +28,42 @@
         />
         <label for="displayAll" class="form-check-label">Hepsini Göster</label>
       </div>
-
-      <table class="table table-bordered" *ngIf="getItems().length">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Description</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of getItems(); let i = index">
-            <td>{{ i + 1 }}</td>
-            <!-- <td>{{ item.id }}</td> -->
-            <td>{{ item.description }}</td>
-            <!-- <td>{{ item.action }}</td> -->
-            <div [ngSwitch]="item.action">
-              <div *ngSwitchCase="true">Yes</div>
-              <div *ngSwitchCase="false">No</div>
-            </div>
-            <td>
-              <input
-                type="checkbox"
-                name="item-check"
-                id="item-check"
-                [(ngModel)]="item.action"
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="alert alert-warning" *ngIf="!getItems().length">
+      <div
+        class="alert alert-warning"
+        *ngIf="getItems().length == 0; else itemsTable"
+      >
         List is empty
       </div>
+      <ng-template #itemsTable>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of getItems(); let i = index">
+              <td>{{ i + 1 }}</td>
+              <!-- <td>{{ item.id }}</td> -->
+              <td>{{ item.description }}</td>
+              <!-- <td>{{ item.action }}</td> -->
+              <div [ngSwitch]="item.action">
+                <div *ngSwitchCase="true">Yes</div>
+                <div *ngSwitchCase="false">No</div>
+              </div>
+              <td>
+                <input
+                  type="checkbox"
+                  name="item-check"
+                  id="item-check"
+                  [(ngModel)]="item.action"
+                />
+              </td>
+            </tr>
+          </tbody></table
+      ></ng-template>
     </div>
   </div>
 </div>
