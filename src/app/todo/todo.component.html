@@ -50,6 +50,7 @@
             <tr
               *ngFor="let item of getItems(); let i = index"
               [class]="{ 'bg-light': item.action }"
+              [id]="item.id"
             >
               <td>{{ i + 1 }}</td>
               <!-- <td>{{ item.id }}</td> -->
@@ -81,6 +82,7 @@
                   name="item-check"
                   id="item-check"
                   [(ngModel)]="item.action"
+                  (change)="changeAction(item.id)"
                 />
               </td>
             </tr>

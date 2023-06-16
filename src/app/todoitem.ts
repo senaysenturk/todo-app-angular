@@ -20,6 +20,7 @@
 //Interface ile tanımlama
 
 export interface TodoItem {
+  id: number;
   description: string;
   action: boolean;
 }

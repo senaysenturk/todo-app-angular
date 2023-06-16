@@ -8,16 +8,19 @@ export class Model {
     this.name = 'Şenay';
     this.items = [
       {
+        id: 0,
         description: 'Kahvaltı',
         action: true,
       },
       {
+        id: 1,
         description: 'Spor',
-        action:false,
+        action: false,
       },
       {
+        id: 3,
         description: 'Alışveriş',
-        action: true
+        action: true,
       },
     ];
   }

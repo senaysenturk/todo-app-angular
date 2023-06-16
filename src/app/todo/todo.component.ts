@@ -53,7 +53,11 @@ export class TodoComponent {
   }
   addItem() {
     if (this.inputText) {
-      let data = { description: this.inputText, action: false };
+      let data = {
+        description: this.inputText,
+        action: false,
+        id: Math.floor(Math.random() + Date.now()),
+      };
       this.model.items.push(data);
 
       let items = this.getFromLocalStorage();
@@ -68,13 +72,21 @@ export class TodoComponent {
     let items: TodoItem[] = [];
     var localValue = localStorage.getItem('items');
     if (localValue != null) items = JSON.parse(localValue);
-    console.log(items);
-
     return items;
   }
   getItems() {
     // alert(this.displayAll)
     if (this.displayAll) return this.model.items;
     return this.model.items.filter((item) => !item.action);
+  }
+  changeAction(id: number) {
+    let items = this.getFromLocalStorage();
+
+    const item = items.find((item) => item.id === id);
+    console.log(item);
+    if (item) {
+      item.action = !item.action;
+      localStorage.setItem('items', JSON.stringify(items));
+    }
   }
 }
