@@ -4,8 +4,18 @@
       <h3 class="bg-primary text-white p-3">{{ getName() }}'s To Do List</h3>
 
       <div class="input-group mb-3">
-        <input type="text" class="form-control" />
-        <button class="btn btn-outline-primary">Add</button>
+        <input
+          #txtItem
+          type="text"
+          class="form-control"
+          (keyup.enter)="addItem(txtItem.value); txtItem.value = ''"
+        />
+        <button
+          class="btn btn-outline-primary"
+          (click)="addItem(txtItem.value); txtItem.value = ''"
+        >
+          Add
+        </button>
       </div>
 
       <div class="form-check mb-3">
@@ -14,7 +24,7 @@
           class="form-check-input"
           name=""
           id="displayAll"
-         [(ngModel)]="displayAll"
+          [(ngModel)]="displayAll"
         />
         <label for="displayAll" class="form-check-label">Hepsini Göster</label>
       </div>
@@ -33,6 +43,14 @@
             <!-- <td>{{ item.id }}</td> -->
             <td>{{ item.description }}</td>
             <td>{{ item.action }}</td>
+            <td>
+              <input
+                type="checkbox"
+                name="item-check"
+                id="item-check"
+                [(ngModel)]="item.action"
+              />
+            </td>
           </tr>
         </tbody>
       </table>

@@ -48,6 +48,10 @@ export class TodoComponent {
   getName() {
     return this.model.name;
   }
+  addItem(val: string) {
+    alert(val);
+    this.model.items.push({ description: val, action: false });
+  }
 
   getItems() {
     // alert(this.displayAll)
