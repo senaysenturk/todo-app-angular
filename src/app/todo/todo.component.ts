@@ -9,6 +9,7 @@ import { Model } from '../model';
 })
 export class TodoComponent {
   displayAll: boolean = true;
+  inputText: string = '';
   constructor() {}
   //items: TodoItem[] = [
   // {
@@ -49,8 +50,7 @@ export class TodoComponent {
     return this.model.name;
   }
   addItem(val: string) {
-    alert(val);
-    this.model.items.push({ description: val, action: false });
+    if (val) this.model.items.push({ description: val, action: false });
   }
 
   getItems() {
