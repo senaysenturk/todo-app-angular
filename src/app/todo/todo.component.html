@@ -29,7 +29,7 @@
         <label for="displayAll" class="form-check-label">Hepsini Göster</label>
       </div>
 
-      <table class="table table-bordered">
+      <table class="table table-bordered" *ngIf="getItems().length">
         <thead>
           <tr>
             <th></th>
@@ -54,6 +54,9 @@
           </tr>
         </tbody>
       </table>
+      <div class="alert alert-warning" *ngIf="!getItems().length">
+        List is empty
+      </div>
     </div>
   </div>
 </div>
