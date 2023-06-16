@@ -10,7 +10,9 @@ import { Model } from '../model';
 export class TodoComponent {
   displayAll: boolean = true;
   inputText: string = '';
-  constructor() {}
+  constructor() {
+    this.model.items = this.getFromLocalStorage();
+  }
   //items: TodoItem[] = [
   // {
   //   description: 'Kahvaltı',
@@ -50,10 +52,26 @@ export class TodoComponent {
     return this.model.name;
   }
   addItem() {
-    if (this.inputText)
-      this.model.items.push({ description: this.inputText, action: false });
+    if (this.inputText) {
+      let data = { description: this.inputText, action: false };
+      this.model.items.push(data);
+
+      let items = this.getFromLocalStorage();
+      items.push(data);
+      localStorage.setItem('items', JSON.stringify(items));
+
+      this.inputText = '';
+    }
   }
 
+  getFromLocalStorage() {
+    let items: TodoItem[] = [];
+    var localValue = localStorage.getItem('items');
+    if (localValue != null) items = JSON.parse(localValue);
+    console.log(items);
+
+    return items;
+  }
   getItems() {
     // alert(this.displayAll)
     if (this.displayAll) return this.model.items;
