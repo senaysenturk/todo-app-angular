@@ -42,7 +42,11 @@
             <td>{{ i + 1 }}</td>
             <!-- <td>{{ item.id }}</td> -->
             <td>{{ item.description }}</td>
-            <td>{{ item.action }}</td>
+            <!-- <td>{{ item.action }}</td> -->
+            <div [ngSwitch]="item.action">
+              <div *ngSwitchCase="true">Yes</div>
+              <div *ngSwitchCase="false">No</div>
+            </div>
             <td>
               <input
                 type="checkbox"
