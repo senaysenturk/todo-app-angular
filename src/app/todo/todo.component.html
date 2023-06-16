@@ -8,13 +8,13 @@
           #txtItem
           type="text"
           class="form-control"
-          (keyup.enter)="addItem(txtItem.value); txtItem.value = ''"
+          (keyup.enter)="addItem(); inputText = ''"
           [(ngModel)]="inputText"
         />
         <button
           class="btn btn-outline-primary"
-          [class.disabled]="!txtItem.value.length"
-          (click)="addItem(txtItem.value); txtItem.value = ''"
+          [class.disabled]="!inputText.length"
+          (click)="addItem(); inputText = ''"
         >
           Add
         </button>

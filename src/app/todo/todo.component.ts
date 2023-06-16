@@ -49,8 +49,9 @@ export class TodoComponent {
   getName() {
     return this.model.name;
   }
-  addItem(val: string) {
-    if (val) this.model.items.push({ description: val, action: false });
+  addItem() {
+    if (this.inputText)
+      this.model.items.push({ description: this.inputText, action: false });
   }
 
   getItems() {
